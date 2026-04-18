@@ -1,0 +1,29 @@
+{
+  "name": "neniy",
+  "displayName": "Neniy",
+  "description": "Neniy Programmin Language",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.110.0"
+  },
+  "categories": [
+    "Programming Languages"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "neniy",
+      "aliases": ["neniy", "neniy"],
+      "extensions": [".neniy"],
+      "configuration": "./language-configuration.json",
+      "icon": {
+        "light": "./icon.png",
+        "dark": "./icon.png"
+      }
+    }],
+    "grammars": [{
+      "language": "neniy",
+      "scopeName": "source.neniy",
+      "path": "./syntaxes/neniy.tmLanguage.json"
+    }]
+  }
+}

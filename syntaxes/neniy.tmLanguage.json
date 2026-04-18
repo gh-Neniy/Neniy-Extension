@@ -1,0 +1,109 @@
+{
+	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+	"name": "neniy",
+	"patterns": [
+		{ "include": "#keywords" },
+    { "include": "#numbers" },
+		{ "include": "#strings" },
+    { "include": "#comments" },
+    { "include": "#selectors" },
+    { "include": "#identifiers" }
+	],
+	"repository": {
+		"keywords": {
+      "patterns": [
+        {
+          "match": "(^|\\brun\\s+)(data|clear|clone|ex|fill|fn|gm|give|kill|pls|ptc|say|scb|setblock|sm|tellraw|time|tp|use)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword"
+            },
+            "2": {
+              "name": "keyword.control"
+            }
+          }
+        },
+        {
+          "match": "(^|\\brun\\s+)(gamerule|native|tag|team|spectate|damage|effect|stopsound|spawnpoint)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword"
+            },
+            "2": {
+              "name": "keyword.control"
+            }
+          }
+        },
+        {
+          "name": "keyword",
+          "match": "\\b(add|adventure|align|as|at|block|blue|creative|dark_blue|dark_green|dark_red|ent|get|gold|gray|green)\\b"
+        },
+        {
+          "name": "keyword",
+          "match": "\\b(if|keep|masked|modify|obj|players|pos|red|replace|run|score|set|spectator|survival|uninited|unless)\\b"
+        },
+        {
+          "name": "keyword",
+          "match": "\\b(yellow|join|normal|force|give|clear)\\b"
+        },
+        {
+          "begin": "\\[",
+          "end": "\\]",
+          "patterns": [
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(bold|can_grab|chest|chest_chance|clean|color|distance|feet|feet_chance|head|head_chance|health)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(hieroglyph|invulnerable|italic|left_hand|left_hand_chance|legs|legs_chance|limit|loot_table|lore)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(motion|name|name_visible|nbt|no_ai|no_despawn|no_knockback|right_hand|right_hand_chance|rotation)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(shine|silent|tag|team|text|sort|id|hide|attack_damage|attack_speed|unbreakable|pickup_delay|item)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(data|in_ground|powered|lit|type|can_place_on|enchantments|stack|potion_color|potion)\\b"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        }
+      ]
+		},
+    "numbers": {
+      "name": "constant.numeric",
+      "match": "(~?-?\\d+(\\.\\d+)?|~|(-?\\d+(\\.\\d+)?)?\\.\\.(-?\\d+(\\.\\d+)?)?|\\b(true|false)\\b)"
+    },
+		"strings": {
+			"name": "string.quoted.single",
+			"begin": "'",
+			"end": "'",
+			"patterns": [
+				{
+					"name": "constant.character.escape",
+					"match": "\\\\."
+				}
+			]
+		},
+    "selectors": {
+      "name": "entity.name.type",
+      "match": "@[aepsr]"
+    },
+    "comments": {
+      "name": "comment.line",
+      "match": "//.*"
+    },
+    "identifiers": {
+      "name": "variable.other",
+      "match": "[a-zA-Z0-9_#:/]+"
+    }
+	},
+	"scopeName": "source.neniy"
+}
