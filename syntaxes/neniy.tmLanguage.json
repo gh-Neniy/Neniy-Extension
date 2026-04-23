@@ -35,8 +35,19 @@
           }
         },
         {
+          "match": "(\\b(if|unless|items)\\s+)(block)\\b",
+          "captures": {
+            "2": {
+              "name": "keyword"
+            },
+            "3": {
+              "name": "keyword"
+            }
+          }
+        },
+        {
           "name": "keyword",
-          "match": "\\b(add|adventure|align|as|at|block|blue|creative|dark_blue|dark_green|dark_red|ent|get|gold|gray|green)\\b"
+          "match": "\\b(add|adventure|align|as|at|blue|creative|dark_blue|dark_green|dark_red|ent|get|gold|gray|green)\\b"
         },
         {
           "name": "keyword",
@@ -68,7 +79,24 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(data|in_ground|powered|lit|type|can_place_on|enchantments|stack|potion_color|potion)\\b"
+              "match": "\\b(data|in_ground|powered|lit|type|can_place_on|enchantments|stack|potion_color|potion|invisible|no_gravity)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(level|block|from_color|to_color|scale|north|south|west|east|teleport_duration|gm|dx|dy|dz|open|crit)\\b"
+            },
+            {
+              "include": "$self"
+            }
+          ]
+        },
+        {
+          "begin": "\\{",
+          "end": "\\}",
+          "patterns": [
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(text|color|italic|bold|hieroglyph)\\b"
             },
             {
               "include": "$self"
