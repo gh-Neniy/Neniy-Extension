@@ -24,7 +24,7 @@
           }
         },
         {
-          "match": "(^|\\brun\\s+)(gamerule|native|tag|team|spectate|damage|effect|stopsound|spawnpoint)\\b",
+          "match": "(^|\\brun\\s+)(gamerule|native|tag|team|spectate|damage|effect|stopsound|spawnpoint|title|bossbar|advancement)\\b",
           "captures": {
             "1": {
               "name": "keyword"
@@ -55,7 +55,7 @@
         },
         {
           "name": "keyword",
-          "match": "\\b(yellow|join|normal|force|give|clear)\\b"
+          "match": "\\b(yellow|join|normal|force|give|clear|move|subtitle|title|max|reset)\\b"
         },
         {
           "begin": "\\[",
@@ -83,7 +83,11 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(level|block|from_color|to_color|scale|north|south|west|east|teleport_duration|gm|dx|dy|dz|open|crit)\\b"
+              "match": "\\b(level|block|from_color|to_color|scale|north|south|west|east|teleport_duration|gm|dx|dy|dz|open|crit|about)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(sign|x_rotation|y_rotation|axis|size)\\b"
             },
             {
               "include": "$self"
