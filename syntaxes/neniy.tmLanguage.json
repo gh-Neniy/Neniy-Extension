@@ -35,7 +35,29 @@
           }
         },
         {
+          "match": "(^|\\brun\\s+)(attribute)\\b",
+          "captures": {
+            "1": {
+              "name": "keyword"
+            },
+            "2": {
+              "name": "keyword.control"
+            }
+          }
+        },
+        {
           "match": "(\\b(if|unless|items)\\s+)(block)\\b",
+          "captures": {
+            "2": {
+              "name": "keyword"
+            },
+            "3": {
+              "name": "keyword"
+            }
+          }
+        },
+        {
+          "match": "(\\b(store)\\s+)(storage)\\b",
           "captures": {
             "2": {
               "name": "keyword"
@@ -55,7 +77,7 @@
         },
         {
           "name": "keyword",
-          "match": "\\b(yellow|join|normal|force|give|clear|move|subtitle|title|max|reset)\\b"
+          "match": "\\b(yellow|join|normal|force|give|clear|move|subtitle|title|max|reset|anchored|store|opr|aqua|dark_aqua|white)\\b"
         },
         {
           "begin": "\\[",
@@ -71,7 +93,7 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(motion|name|name_visible|nbt|no_ai|no_despawn|no_knockback|right_hand|right_hand_chance|rotation)\\b"
+              "match": "\\b(motion|name|name_visible|no_ai|no_despawn|no_knockback|right_hand|right_hand_chance|rotation)\\b"
             },
             {
               "name": "variable.other.enummember",
@@ -87,7 +109,7 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(sign|x_rotation|y_rotation|axis|size)\\b"
+              "match": "\\b(sign|x_rotation|y_rotation|axis|size|selected_item|interaction)\\b"
             },
             {
               "include": "$self"
