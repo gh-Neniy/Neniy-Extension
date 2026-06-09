@@ -69,7 +69,7 @@
         },
         {
           "name": "keyword",
-          "match": "\\b(add|adventure|align|as|at|blue|creative|dark_blue|dark_green|dark_red|ent|get|gold|gray|green)\\b"
+          "match": "\\b(add|adventure|align|as|at|blue|creative|dark_blue|dark_green|dark_red|ent|get|gold|gray|green|remove)\\b"
         },
         {
           "name": "keyword",
