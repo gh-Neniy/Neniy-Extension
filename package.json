@@ -1,8 +1,8 @@
 {
   "name": "neniy",
   "displayName": "Neniy",
-  "description": "Neniy Programmin Language",
-  "version": "0.0.1",
+  "description": "Neniy Programming Language",
+  "version": "0.1.0",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -10,20 +10,59 @@
     "Programming Languages"
   ],
   "contributes": {
-    "languages": [{
-      "id": "neniy",
-      "aliases": ["neniy", "neniy"],
-      "extensions": [".neniy"],
-      "configuration": "./language-configuration.json",
-      "icon": {
-        "light": "./icon.png",
-        "dark": "./icon.png"
+    "languages": [
+      {
+        "id": "neniy",
+        "aliases": [
+          "neniy",
+          "neniy"
+        ],
+        "extensions": [
+          ".neniy"
+        ],
+        "configuration": "./language-configuration.json",
+        "icon": {
+          "light": "./icon.png",
+          "dark": "./icon.png"
+        }
       }
-    }],
-    "grammars": [{
-      "language": "neniy",
-      "scopeName": "source.neniy",
-      "path": "./syntaxes/neniy.tmLanguage.json"
-    }]
+    ],
+    "configuration": {
+      "title": "Version",
+      "properties": {
+        "neniy.mcVersion": {
+          "type": "string",
+          "default": "1.21.11",
+          "description": "Minecraft version"
+        }
+      }
+    },
+    "grammars": [
+      {
+        "language": "neniy",
+        "scopeName": "source.neniy",
+        "path": "./syntaxes/neniy.tmLanguage.json"
+      }
+    ]
+  },
+  "main": "./out/extension.js",
+  "scripts": {
+    "compile": "tsc -p ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gh-Neniy/Neniy-Extension.git"
+  },
+  "keywords": [],
+  "author": "Neniy",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gh-Neniy/Neniy-Extension/issues"
+  },
+  "homepage": "https://github.com/gh-Neniy/Neniy-Extension#readme",
+  "devDependencies": {
+    "@types/node": "^26.2.0",
+    "@types/vscode": "^1.110.0",
+    "typescript": "^7.0.2"
   }
 }
