@@ -8,25 +8,28 @@ export function activate(context: vscode.ExtensionContext) {
 
     vscode.workspace.findFiles('**/*.neniy').then((uris) => {
         if (uris.length > 0) {
-            runCompilerCheck(uris);
+            runCompiler(uris, true);
         }
     });
 
     vscode.workspace.onDidSaveTextDocument((document) => {
         if (document.languageId === 'neniy') {
-            runCompilerCheck([document.uri]);
+            runCompiler([document.uri], false);
         }
     });
 }
 
-function runCompilerCheck(uris: vscode.Uri[]) {
+function runCompiler(uris: vscode.Uri[], isCheck: boolean) {
     const workspaceFolder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath || '';
     const config = vscode.workspace.getConfiguration('neniy');
-    const version = config.get<string>('mcVersion') || '1.21.11';
+    const minecraftVersion = config.get<string>('minecraftVersion') || '1.20';
 
+    const outputDirectory = config.get<string>('outputDirectory') || '.';
     const files = uris.map(uri => `${uri.fsPath}`).join(' ');
+    const execString = isCheck ? `neniy -c -j -v ${minecraftVersion} ${files}` :
+                        `neniy -j -v ${minecraftVersion} -d "${outputDirectory}" ${files}`;
 
-    exec(`neniy --check -v ${version} ${files}`, { cwd: workspaceFolder }, (error, stdout, stderr) => {
+    exec(execString, { cwd: workspaceFolder }, (error, stdout, stderr) => {
         uris.forEach(uri => diagnosticCollection.delete(uri));
 
         if (!stdout.trim()) return;

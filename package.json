@@ -2,7 +2,7 @@
   "name": "neniy",
   "displayName": "Neniy",
   "description": "Neniy Programming Language",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -28,12 +28,15 @@
       }
     ],
     "configuration": {
-      "title": "Version",
+      "title": "Settings for neniy",
       "properties": {
-        "neniy.mcVersion": {
+        "neniy.minecraftVersion": {
           "type": "string",
-          "default": "1.21.11",
           "description": "Minecraft version"
+        },
+        "neniy.outputDirectory": {
+          "type": "string",
+          "description": "Output directory"
         }
       }
     },
