@@ -35,7 +35,7 @@
           }
         },
         {
-          "match": "(^|\\brun\\s+)(attribute)\\b",
+          "match": "(^|\\brun\\s+)(attribute|random|loot)\\b",
           "captures": {
             "1": {
               "name": "keyword"
@@ -73,7 +73,7 @@
         },
         {
           "name": "keyword",
-          "match": "\\b(if|keep|masked|modify|obj|players|pos|red|replace|run|score|set|spectator|survival|uninited|unless)\\b"
+          "match": "\\b(if|keep|masked|modify|obj|players|pos|red|replace|run|score|set|spectator|survival|uninited|unless|facing)\\b"
         },
         {
           "name": "keyword",
@@ -85,11 +85,11 @@
           "patterns": [
             {
               "name": "variable.other.enummember",
-              "match": "\\b(bold|can_grab|chest|chest_chance|clean|color|distance|feet|feet_chance|head|head_chance|health)\\b"
+              "match": "\\b(billboard|bold|can_grab|chest|chest_chance|clean|color|distance|feet|feet_chance|head|head_chance)\\b"
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(hieroglyph|invulnerable|italic|left_hand|left_hand_chance|legs|legs_chance|limit|loot_table|lore)\\b"
+              "match": "\\b(health|invulnerable|italic|left_hand|left_hand_chance|legs|legs_chance|limit|loot_table|lore)\\b"
             },
             {
               "name": "variable.other.enummember",
@@ -109,7 +109,7 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(sign|x_rotation|y_rotation|axis|size|selected_item|interaction|height|width)\\b"
+              "match": "\\b(sign|x_rotation|y_rotation|axis|size|selected_item|interaction|height|width|no_trade|profession)\\b"
             },
             {
               "include": "$self"
@@ -122,7 +122,7 @@
           "patterns": [
             {
               "name": "variable.other.enummember",
-              "match": "\\b(text|color|italic|bold|hieroglyph)\\b"
+              "match": "\\b(alt|text|color|italic|bold)\\b"
             },
             {
               "include": "$self"
