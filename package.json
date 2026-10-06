@@ -1,8 +1,10 @@
 {
   "name": "neniy",
   "displayName": "Neniy",
+  "publisher": "neniy",
   "description": "Neniy Programming Language",
   "version": "0.1.1",
+  "icon": "icon.png",
   "engines": {
     "vscode": "^1.110.0"
   },
@@ -64,7 +66,7 @@
   },
   "homepage": "https://github.com/gh-Neniy/Neniy-Extension#readme",
   "devDependencies": {
-    "@types/node": "^26.2.0",
+    "@types/node": "^26.6.4",
     "@types/vscode": "^1.110.0",
     "typescript": "^7.0.2"
   }
