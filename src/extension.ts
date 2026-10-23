@@ -1,10 +1,12 @@
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
+import { registerFunctionDefinitions } from './definitionProvider';
 
 const diagnosticCollection = vscode.languages.createDiagnosticCollection('neniy');
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(diagnosticCollection);
+    registerFunctionDefinitions(context);
 
     vscode.workspace.findFiles('**/*.neniy').then((uris) => {
         if (uris.length > 0) {
