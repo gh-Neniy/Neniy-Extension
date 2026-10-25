@@ -1,12 +1,14 @@
 import * as vscode from 'vscode';
 import { exec } from 'child_process';
 import { registerFunctionDefinitions } from './definitionProvider';
+import { letNames } from './letProvider'
 
 const diagnosticCollection = vscode.languages.createDiagnosticCollection('neniy');
 
 export function activate(context: vscode.ExtensionContext) {
     context.subscriptions.push(diagnosticCollection);
     registerFunctionDefinitions(context);
+    letNames(context);
 
     vscode.workspace.findFiles('**/*.neniy').then((uris) => {
         if (uris.length > 0) {
@@ -29,7 +31,7 @@ function runCompiler(uris: vscode.Uri[], isCheck: boolean) {
     const outputDirectory = config.get<string>('outputDirectory') || '.';
     const files = uris.map(uri => `${uri.fsPath}`).join(' ');
     const execString = isCheck ? `neniy -c -j -v ${minecraftVersion} ${files}` :
-                        `neniy -j -v ${minecraftVersion} -d "${outputDirectory}" ${files}`;
+        `neniy -j -v ${minecraftVersion} -d "${outputDirectory}" ${files}`;
 
     exec(execString, { cwd: workspaceFolder }, (error, stdout, stderr) => {
         uris.forEach(uri => diagnosticCollection.delete(uri));
@@ -37,7 +39,7 @@ function runCompiler(uris: vscode.Uri[], isCheck: boolean) {
         if (!stdout.trim()) return;
 
         try {
-            const errors = JSON.parse(stdout);            
+            const errors = JSON.parse(stdout);
             const diagnosticsMap = new Map<string, vscode.Diagnostic[]>();
 
             for (let err of errors) {
@@ -50,12 +52,12 @@ function runCompiler(uris: vscode.Uri[], isCheck: boolean) {
                     new vscode.Position(err.range.end_row, err.range.end_col + 1)
                 );
 
-                const severity = err.severity === 'error' 
-                    ? vscode.DiagnosticSeverity.Error 
+                const severity = err.severity === 'error'
+                    ? vscode.DiagnosticSeverity.Error
                     : vscode.DiagnosticSeverity.Warning;
 
                 const diagnostic = new vscode.Diagnostic(range, err.msg, severity);
-                
+
                 if (!diagnosticsMap.has(err.file)) {
                     diagnosticsMap.set(err.file, []);
                 }
@@ -72,4 +74,4 @@ function runCompiler(uris: vscode.Uri[], isCheck: boolean) {
     });
 }
 
-export function deactivate() {}
+export function deactivate() { }

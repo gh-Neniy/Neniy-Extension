@@ -1,19 +1,31 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "neniy",
-	"patterns": [
-		{ "include": "#keywords" },
-    { "include": "#numbers" },
-		{ "include": "#strings" },
-    { "include": "#comments" },
-    { "include": "#selectors" },
-    { "include": "#identifiers" }
-	],
-	"repository": {
-		"keywords": {
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "name": "neniy",
+  "patterns": [
+    {
+      "include": "#keywords"
+    },
+    {
+      "include": "#numbers"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comments"
+    },
+    {
+      "include": "#selectors"
+    },
+    {
+      "include": "#identifiers"
+    }
+  ],
+  "repository": {
+    "keywords": {
       "patterns": [
         {
-          "match": "(^|\\brun\\s+)(data|clear|clone|ex|fill|fn|gm|give|kill|pls|ptc|say|scb|setblock|sm|tellraw|time|tp|use)\\b",
+          "match": "(^|\\brun\\s+)(data|clear|clone|ex|fill|fn|gm|give|kill|let|pls|ptc|say|scb|setblock|sm|tellraw|time|tp|use)\\b",
           "captures": {
             "1": {
               "name": "keyword"
@@ -109,7 +121,11 @@
             },
             {
               "name": "variable.other.enummember",
-              "match": "\\b(sign|x_rotation|y_rotation|axis|size|selected_item|interaction|height|width|no_trade|profession)\\b"
+              "match": "\\b(sign|x_rotation|y_rotation|axis|size|selected_item|interaction|height|width|no_trade|profession|top|bottom)\\b"
+            },
+            {
+              "name": "variable.other.enummember",
+              "match": "\\b(left_rotation|translation)\\b"
             },
             {
               "include": "$self"
@@ -130,22 +146,22 @@
           ]
         }
       ]
-		},
+    },
     "numbers": {
       "name": "constant.numeric",
       "match": "(~?-?\\d+(\\.\\d+)?|~|(-?\\d+(\\.\\d+)?)?\\.\\.(-?\\d+(\\.\\d+)?)?|\\b(true|false)\\b)"
     },
-		"strings": {
-			"name": "string.quoted.single",
-			"begin": "'",
-			"end": "'",
-			"patterns": [
-				{
-					"name": "constant.character.escape",
-					"match": "\\\\."
-				}
-			]
-		},
+    "strings": {
+      "name": "string.quoted.single",
+      "begin": "'",
+      "end": "'",
+      "patterns": [
+        {
+          "name": "constant.character.escape",
+          "match": "\\\\."
+        }
+      ]
+    },
     "selectors": {
       "name": "entity.name.type",
       "match": "@[aepsr]"
@@ -158,6 +174,6 @@
       "name": "variable.other",
       "match": "[a-zA-Z0-9_#:/]+"
     }
-	},
-	"scopeName": "source.neniy"
+  },
+  "scopeName": "source.neniy"
 }
